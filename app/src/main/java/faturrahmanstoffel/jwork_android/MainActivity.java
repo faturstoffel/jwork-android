@@ -6,7 +6,9 @@ import android.widget.ExpandableListAdapter;
 import android.os.Bundle;
 import android.widget.ExpandableListView;
 
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,16 +22,20 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Job> jobIdList = new ArrayList<>();
     private HashMap<Recruiter, ArrayList<Job>> childMapping = new HashMap<>();
 
+    ExpandableListAdapter listAdapter;
+    ExpandableListView expListView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ExpandableListView expListView = (ExpandableListView) findViewById(R.id.lvExp);
+
+        expListView = (ExpandableListView) findViewById(R.id.lvExp);
 
         refreshList();
     }
 
-    protected void refreshList() {
+    protected void refreshList(){
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -45,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                             String province = location.getString("province");
                             String description = location.getString("description");
 
-                            Location location1 = new Location(city, province, description);
+                            Location location1 = new Location(province, city, description);
 
                             int recruiterId = recruiter.getInt("id");
                             String recruiterName = recruiter.getString("name");
@@ -66,29 +72,35 @@ public class MainActivity extends AppCompatActivity {
                             }
 
                             int jobId = job.getInt("id");
-                            int jobPrice = job.getInt("price");
+                            int jobFee = job.getInt("fee");
                             String jobName = job.getString("name");
                             String jobCategory = job.getString("category");
 
-                            Job newJob = new Job(jobId, jobName, newRecruiter, jobPrice, jobCategory);
+                            Job newJob = new Job(jobId, jobName, newRecruiter, jobFee, jobCategory);
                             jobIdList.add(newJob);
 
-                            for (Recruiter sel : listRecruiter) {
+                            for (Recruiter rec : listRecruiter) {
                                 ArrayList<Job> temp = new ArrayList<>();
-                                for (Job jobs : jobIdList) {
-                                    if (jobs.getRecruiter().getName().equals(sel.getName()) || jobs.getRecruiter().getEmail().equals(sel.getEmail()) || jobs.getRecruiter().getPhoneNumber().equals(sel.getPhoneNumber())) {
-                                        temp.add(jobs);
+                                for (Job job2 : jobIdList) {
+                                    if (job2.getRecruiter().getName().equals(rec.getName()) ||
+                                            job2.getRecruiter().getEmail().equals(rec.getEmail()) ||
+                                            job2.getRecruiter().getPhoneNumber().equals(rec.getPhoneNumber())) {
+                                        temp.add(job2);
                                     }
                                 }
-                                childMapping.put(sel, temp);
+                                childMapping.put(rec, temp);
                             }
                         }
+                        listAdapter = new MainListAdapter(MainActivity.this, listRecruiter, childMapping);
+                        expListView.setAdapter(listAdapter);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
         };
-
+        MenuRequest menuRequest = new MenuRequest(responseListener);
+        RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
+        queue.add(menuRequest);
     }
 }

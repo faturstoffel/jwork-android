@@ -34,6 +34,7 @@ public class Location {
     public void setCity(String city){
         this.city = city;
     }
+
     @Override
     public String toString()
     {
@@ -43,5 +44,6 @@ public class Location {
                 "\nDescription   : " + description +
                 "\n==========================================";
     }
+
 
 }

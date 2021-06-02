@@ -54,7 +54,6 @@ public class Job {
     public void setCategory(String category){
         this.category = category;
     }
-
     @Override
     public  String toString(){
         return"Job======================="+
@@ -65,5 +64,6 @@ public class Job {
                 "\nRecruiter      : " + recruiter +
                 "\n==========================================";
     }
+
 
 }

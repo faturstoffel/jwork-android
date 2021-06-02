@@ -81,7 +81,7 @@ public class MainListAdapter extends BaseExpandableListAdapter {
 
         TextView ListItem = (TextView) convertView.findViewById(R.id.lblListItem);
         ListItem.setTypeface(null, Typeface.BOLD);
-        ListItem.setText("Seller " + headerTitle.getName());
+        ListItem.setText("Recruiter " + headerTitle.getName());
 
         return convertView;
     }

@@ -57,7 +57,7 @@ public class Recruiter {
     @Override
     public String toString()
     {
-        return "= Seller =====================================" +
+        return "= Recruiter =====================================" +
                 "\nId     : " + id +
                 "\nName    : " + name +
                 "\nEmail   : " + email +
@@ -65,4 +65,6 @@ public class Recruiter {
                 "\nLocation : " + location +
                 "\n==========================================";
     }
+
+
 }

@@ -1,5 +1,6 @@
 package faturrahmanstoffel.jwork_android;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
 
@@ -12,11 +13,10 @@ public class MenuRequest extends StringRequest {
 
     public MenuRequest(Response.Listener<String> listener) {
         super(Method.GET, URL, listener, null);
-        params = new HashMap<>();
     }
 
     @Override
-    public Map<String, String> getParams() {
+    protected Map<String, String> getParams() throws AuthFailureError {
         return params;
     }
 }

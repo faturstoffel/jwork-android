@@ -46,6 +46,7 @@ public class LoginActivity extends AppCompatActivity {
                          }
                      } catch (JSONException e) {
                          Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
+                         e.printStackTrace();
                      }
                  }
              };

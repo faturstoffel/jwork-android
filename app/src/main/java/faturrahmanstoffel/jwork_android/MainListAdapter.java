@@ -11,10 +11,16 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Class MainListAdapter, untuk membuat list adapter pada MainActivity
+ * @author Fatur Rahman Stoffel
+ * @version 21-06-2021
+ */
+
 public class MainListAdapter extends BaseExpandableListAdapter {
     private Context _context;
-    private ArrayList<Recruiter> _listDataHeader; // header titles
-    // child data in format of header title, child title
+    private ArrayList<Recruiter> _listDataHeader;
+
     private HashMap<Recruiter, ArrayList<Job>> _listDataChild;
 
     public MainListAdapter(Context context, ArrayList<Recruiter> listDataHeader, HashMap<Recruiter, ArrayList<Job>> listChildData) {

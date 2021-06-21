@@ -15,6 +15,12 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * Class RegisterActivity, untuk proses register
+ * @author Fatur Rahman Stoffel
+ * @version 21-06-2021
+ */
+
 public class RegisterActivity extends AppCompatActivity {
 
     @Override
@@ -22,11 +28,14 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        EditText fieldNameRegister = findViewById(R.id.fieldNameRegister);;
-        EditText fieldEmailRegister = findViewById(R.id.fieldEmailRegister);
-        EditText fieldPasswordRegister = findViewById(R.id.fieldPasswordRegister);
-        Button tombolRegister = findViewById(R.id.tombolRegister);
+      final EditText fieldNameRegister = findViewById(R.id.fieldNameRegister);;
+      final EditText fieldEmailRegister = findViewById(R.id.fieldEmailRegister);
+      final EditText fieldPasswordRegister = findViewById(R.id.fieldPasswordRegister);
+      final Button tombolRegister = findViewById(R.id.tombolRegister);
 
+        /**
+         * Saat menekan tombol register
+         */
         tombolRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

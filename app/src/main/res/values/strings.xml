@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">jwork-android</string>
+    <string name="total_fee">total_fee</string>
 </resources>

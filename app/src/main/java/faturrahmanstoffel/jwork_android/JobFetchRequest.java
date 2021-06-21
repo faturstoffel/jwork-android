@@ -19,11 +19,11 @@ public class JobFetchRequest extends StringRequest {
 
     /**
      * Method request untuk mengambil requets yang ada
-     * @param jobseekerid parameter id jobseeker
+     * @param jobseekerId parameter id jobseeker
      * @param listener response dari objek pada view
      */
-    public JobFetchRequest(String jobseekerid, Response.Listener<String> listener){
-        super(Method.GET, URL+jobseekerid, listener, null);
+    public JobFetchRequest(String jobseekerId, Response.Listener<String> listener){
+        super(Method.GET, URL+jobseekerId, listener, null);
         params = new HashMap<>();
     }
 

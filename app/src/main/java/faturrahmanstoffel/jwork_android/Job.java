@@ -108,20 +108,4 @@ public class Job {
     public void setCategory(String category){
         this.category = category;
     }
-
-    /**
-     * To String
-     */
-    @Override
-    public  String toString(){
-        return"Job======================="+
-                "\nId     : " + id +
-                "\nName      : " + name +
-                "\nFee         : " + fee +
-                "\nCategory   : " + category +
-                "\nRecruiter      : " + recruiter +
-                "\n==========================================";
-    }
-
-
 }

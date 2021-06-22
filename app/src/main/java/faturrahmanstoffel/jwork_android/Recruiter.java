@@ -108,22 +108,4 @@ public class Recruiter {
     public void setLocation(Location location) {
         this.location = location;
     }
-
-    /**
-     * To String
-     * @return
-     */
-    @Override
-    public String toString()
-    {
-        return "= Recruiter =====================================" +
-                "\nId     : " + id +
-                "\nName    : " + name +
-                "\nEmail   : " + email +
-                "\nPhone   : " + phoneNumber +
-                "\nLocation : " + location +
-                "\n==========================================";
-    }
-
-
 }
